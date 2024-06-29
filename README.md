@@ -82,7 +82,7 @@ If you do not wish to install CUDA, you can modify the script to use the CPU ins
 #
 # `Important`
 ## Download Machine Learning Models
-The machine learning models required for this project are stored on Google Drive. You can download them from [this link]([https://drive.google.com/drive/folders/your-link-here](https://drive.google.com/drive/folders/105UFyY4EdW1IpY8XWdhlZ3ToCvBNPR0A?usp=sharing)). After downloading, place them in the `models/` directory.
+The machine learning models required for this project are stored on Google Drive. You can download them from [this link](https://drive.google.com/drive/folders/105UFyY4EdW1IpY8XWdhlZ3ToCvBNPR0A?usp=sharing). After downloading, place them in the `models/` directory.
 
 if the linke is deprecated contact with me  to get the new link `tareqma7md@gmail.com`
 
