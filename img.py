@@ -1,4 +1,6 @@
+from datetime import datetime
 from matplotlib import pyplot
+import requests
 import cv2 
 from ultralytics import YOLO
 
@@ -92,6 +94,21 @@ for i in lis:
   plat_number+=i["class"]
   plat_number+=" "
 
-print(reversed(plat_number))
+
+# Send data to the Node.js backend
+capture_date = datetime.now().isoformat()
+
+payload = {
+    "plateNumber": plat_number,
+    "captureDate": capture_date,
+    
+}
+response = requests.post("http://localhost:3000/api/images/plates", json=payload)
+if response.status_code == 200:
+    print("Data successfully sent to backend")
+else:
+    print(f"Failed to send data to backend: {response.status_code} {response.text}")
+
+print(plat_number)
 
 

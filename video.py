@@ -103,7 +103,7 @@ while cap.isOpened():
                     "carPath": frame_path,
                     
                 }
-                response = requests.post("http://localhost:3000/api/plates", json=payload)
+                response = requests.post("http://localhost:3000/videos/plates", json=payload)
                 if response.status_code == 200:
                     print("Data successfully sent to backend")
                 else:

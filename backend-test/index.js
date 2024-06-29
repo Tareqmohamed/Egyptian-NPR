@@ -7,7 +7,8 @@ const port = 3000;
 
 app.use(bodyParser.json());
 
-app.post('/api/plates', (req, res) => {
+app.post('/api/videos/plates', (req, res) => {
+    
     const { plateNumber, captureDate, cameraId, platePath, carPath } = req.body;
     console.log(`Plate Number: ${plateNumber}`);
     console.log(`Capture Date: ${captureDate}`);
@@ -17,6 +18,18 @@ app.post('/api/plates', (req, res) => {
     console.log('-----------------------------------------------------------')
     res.send('Data received: ');
 });
+
+app.post('/api/images/plates', (req, res) => {
+    const { plateNumber, captureDate } = req.body;
+
+    console.log(`Plate Number: ${plateNumber}`);
+    console.log(`Capture Date: ${captureDate}`);
+    console.log('-----------------------------------------------------------')
+
+    // Respond to the request indicating data has been received
+    res.send('Data received: ');
+});
+
 
 app.listen(port, () => {
     console.log(`Server running on port ${port}`);
