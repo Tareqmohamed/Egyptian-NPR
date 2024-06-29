@@ -1,2 +1,5 @@
 train/
 models/
+backend-test/node_modules/
+out/
+models.tar.bz2
