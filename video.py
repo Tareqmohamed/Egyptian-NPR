@@ -24,7 +24,7 @@ video_path = "/dev/video0"
 cap = cv2.VideoCapture(video_path)
 
 # Parameters
-frame_interval = .2 * int(cap.get(cv2.CAP_PROP_FPS))  # 60 seconds interval
+frame_interval = .1 * int(cap.get(cv2.CAP_PROP_FPS))  # 60 seconds interval
 camera_id = "camera_1"  # Example camera ID
 
 # List to store detected plates
@@ -42,7 +42,7 @@ while cap.isOpened():
         frame_rgb = cv2.cvtColor(frame, cv2.COLOR_BGR2RGB)
         
         # Detect license plate
-        plate_detection = plate_model(frame_rgb, save_txt=False, conf=0.1, device="cuda")
+        plate_detection = plate_model(frame_rgb, save_txt=False, conf=0.3, device="cuda")
 
         # Crop and display detected plate
         for plate in plate_detection:
@@ -53,7 +53,7 @@ while cap.isOpened():
                 cropped_plate = frame_rgb[y1:y2, x1:x2]
 
                 # Detect characters on the plate
-                ocr_result = ocr_model.predict(cropped_plate, conf=0.2, iou=0.1, max_det=7, device="cuda")
+                ocr_result = ocr_model.predict(cropped_plate, conf=0.05, iou=0.1, max_det=7, device="cuda")
 
                 # Translate detected characters to Arabic
                 detected_chars = []
@@ -103,7 +103,7 @@ while cap.isOpened():
                     "carPath": frame_path,
                     
                 }
-                response = requests.post("http://localhost:3000/videos/plates", json=payload)
+                response = requests.post("http://localhost:3000/api/videos/plates", json=payload)
                 if response.status_code == 200:
                     print("Data successfully sent to backend")
                 else:
